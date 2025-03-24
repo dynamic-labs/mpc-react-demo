@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dynamic MPC Demo",
+  "name": "Dynamic TSS-MPC Demo Application",
   "icons": [
     {
       "src": "favicon.ico",
