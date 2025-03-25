@@ -10,7 +10,11 @@ import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
 const App: React.FC = () => {
   // Get environment ID from .env file or use a placeholder
-  const environmentId = process.env.VITE_DYNAMIC_ENVIRONMENT_ID || "";
+  const environmentId = process.env.VITE_DYNAMIC_ENVIRONMENT_ID;
+
+  if (!environmentId) {
+    throw new Error("VITE_DYNAMIC_ENVIRONMENT_ID is not set");
+  }
 
   // Configure settings for Dynamic provider
   const settings = {
