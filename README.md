@@ -8,6 +8,7 @@ Before using this application, you'll need:
 
 1. A Dynamic account with an environment ID
 2. TSS-MPC feature flag enabled for your environment (contact Dynamic team)
+3. V3 enabled as the default wallet version (toggle within embedded wallet settings)
 
 ### Installation
 
