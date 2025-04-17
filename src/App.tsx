@@ -5,12 +5,16 @@ import {
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { DynamicWaasEVMConnectors } from "@dynamic-labs/waas-evm";
+import { DynamicWaasSuiConnectors } from "@dynamic-labs/waas-sui";
+import { DynamicWaasSVMConnectors } from "@dynamic-labs/waas-svm";
 import MPCDemo from "./components/MPCDemo";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { SolanaWalletConnectors } from "@dynamic-labs/solana";
+import { SuiWalletConnectors } from "@dynamic-labs/sui";
 
 const App: React.FC = () => {
   // Get environment ID from .env file or use a placeholder
-  const environmentId = process.env.VITE_DYNAMIC_ENVIRONMENT_ID;
+  const environmentId = import.meta.env.VITE_ENVIRONMENT_ID;
 
   if (!environmentId) {
     throw new Error("VITE_DYNAMIC_ENVIRONMENT_ID is not set");
@@ -19,7 +23,14 @@ const App: React.FC = () => {
   // Configure settings for Dynamic provider
   const settings = {
     environmentId,
-    walletConnectors: [EthereumWalletConnectors, DynamicWaasEVMConnectors],
+    walletConnectors: [
+      DynamicWaasEVMConnectors,
+      DynamicWaasSuiConnectors,
+      DynamicWaasSVMConnectors,
+      EthereumWalletConnectors,
+      SolanaWalletConnectors,
+      SuiWalletConnectors,
+    ],
     apiBaseUrl: "https://app.dynamicauth.com/api/v0",
   };
 
