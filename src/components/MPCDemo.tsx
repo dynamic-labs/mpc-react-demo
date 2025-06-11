@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
-import { useDynamicWaas } from "@dynamic-labs/sdk-react-core";
-import { DynamicWaasEVMConnector } from "@dynamic-labs/waas-evm";
+import { useDynamicContext, useDynamicWaas } from "@dynamic-labs/sdk-react-core";
 import { isEthereumWallet } from "@dynamic-labs/ethereum";
+import { isDynamicWaasConnector } from '@dynamic-labs/wallet-connector-core';
+import { ChainEnum } from "@dynamic-labs/sdk-api-core";
 
 const MPCDemo: React.FC = () => {
   const { user, handleLogOut, primaryWallet } = useDynamicContext();
@@ -63,7 +63,7 @@ const MPCDemo: React.FC = () => {
       setIsLoading(true);
       setErrorMessage("");
       await importPrivateKey({
-        chainName: "EVM",
+        chainName: ChainEnum.Evm,
         privateKey: privateKeyInput,
       });
       setErrorMessage("Private key imported successfully");
@@ -84,11 +84,16 @@ const MPCDemo: React.FC = () => {
     try {
       setIsLoading(true);
       setErrorMessage("");
-      const connector = primaryWallet?.connector as DynamicWaasEVMConnector;
-      const keyShares = await connector.exportClientKeyshares({
-        accountAddress: primaryWallet?.address,
-      });
-      setExportedKeyShares(JSON.stringify(keyShares, null, 2));
+
+      if(isDynamicWaasConnector(primaryWallet?.connector)) {
+        const connector = primaryWallet?.connector;
+        const keyShares = await connector.exportClientKeyshares({
+          accountAddress: primaryWallet?.address,
+        });
+        setExportedKeyShares(JSON.stringify(keyShares, null, 2));
+      } else {
+        setErrorMessage("Please create a wallet first");
+      }
     } catch (error: any) {
       console.error("Error exporting key shares:", error);
       setErrorMessage(`Error exporting key shares: ${error.message}`);
@@ -106,11 +111,15 @@ const MPCDemo: React.FC = () => {
     try {
       setIsLoading(true);
       setErrorMessage("");
-      const connector = primaryWallet?.connector as DynamicWaasEVMConnector;
-      const privateKey = await connector.exportPrivateKey({
-        accountAddress: primaryWallet?.address,
-      });
-      setExportedPrivateKey(privateKey);
+
+      if(isDynamicWaasConnector(primaryWallet?.connector)) {
+        const connector = primaryWallet?.connector ;
+        return await connector.exportPrivateKey({
+          accountAddress: primaryWallet?.address,
+        });
+      } else {
+        setErrorMessage("Please create a wallet first");
+      }
     } catch (error: any) {
       console.error("Error exporting private key:", error);
       setErrorMessage(`Error exporting private key: ${error.message}`);

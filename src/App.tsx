@@ -4,9 +4,7 @@ import {
   DynamicContextProvider,
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
-import { DynamicWaasEVMConnectors } from "@dynamic-labs/waas-evm";
-import { DynamicWaasSuiConnectors } from "@dynamic-labs/waas-sui";
-import { DynamicWaasSVMConnectors } from "@dynamic-labs/waas-svm";
+
 import MPCDemo from "./components/MPCDemo";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { SolanaWalletConnectors } from "@dynamic-labs/solana";
@@ -24,9 +22,6 @@ const App: React.FC = () => {
   const settings = {
     environmentId,
     walletConnectors: [
-      DynamicWaasEVMConnectors,
-      DynamicWaasSuiConnectors,
-      DynamicWaasSVMConnectors,
       EthereumWalletConnectors,
       SolanaWalletConnectors,
       SuiWalletConnectors,
