@@ -10,20 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dynamic-labs/ethereum": "^4.12.3",
-    "@dynamic-labs/solana": "^4.12.3",
-    "@dynamic-labs/sui": "^4.12.3",
-    "@dynamic-labs/sdk-react-core": "^4.12.3",
-    "@dynamic-labs/waas-evm": "^4.12.3",
-    "@dynamic-labs/waas-sui": "^4.12.3",
-    "@dynamic-labs/waas-svm": "^4.12.3",
+    "@dynamic-labs/ethereum": "^4",
+    "@dynamic-labs/solana": "^4",
+    "@dynamic-labs/sui": "^4",
+    "@dynamic-labs/sdk-react-core": "^4",
     "viem": "^2.23.14",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "devDependencies": {
-    "@types/react": "^18.2.55",
-    "@types/react-dom": "^18.2.19",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.2.1",
