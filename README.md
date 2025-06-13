@@ -32,14 +32,3 @@ npm install
 ```bash
 npm run dev
 ```
-
-## Important Notes
-
-- The TSS-MPC implementation is currently in beta testing.
-- Do not store any assets you cannot afford to lose.
-- Breaking changes may occur in future updates.
-
-## Supported Chains
-
-- EVM
-- Solana (SVM)
